@@ -70,6 +70,7 @@ Tiledata::Tiledata()
 Tiledata::Tiledata(std::string& path)
 {
     s = new olc::Sprite(path);
+    std::cout << path << std::endl;
     d = new olc::Decal(s);
 }
 
@@ -108,7 +109,8 @@ std::string::iterator nsTile::ImportFromString(std::string::iterator str,int siz
             paths.emplace_back(ToCharArray(str),file.path().string());
         }
     }
-    if(size == 0)
+    /*
+    if(size != 0)
     {
         std::vector<std::pair<std::array<char,16>,Tile>> vec = ParseToClassVector<std::pair<std::array<char,16>,Tile>>(str,size);
         for(auto itv = vec.begin();itv != vec.end();itv++)
@@ -126,16 +128,24 @@ std::string::iterator nsTile::ImportFromString(std::string::iterator str,int siz
                 }
             }
         }
+        
         if(vec.size() == 0)
         {
             std::cout << "assets couldn't found exiting!\n";
             exit(EXIT_FAILURE);
         }
     }
+    */
     for(auto& p : paths)
     {
+        std::cout << "debug\n";
         dictionary.insert(std::pair(p.first,Tile(Tiledatas.size())));
-        Tiledatas.push_back(Tiledata(p.second));
+        std::cout << p.second + " jj" << std::endl;
+        Tiledata td(p.second);
+        std::cout << "debugnnn\n";
+        Tiledatas.push_back(td);
+        std::cout << "böyle programın\n";
     }
     return str + sizeof(std::vector<std::pair<std::array<char,16>,Tile>>) * size;
+    return str + 0;
 }

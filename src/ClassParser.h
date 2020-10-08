@@ -1,5 +1,5 @@
-#ifndef ClassParser
-#define ClassParser
+#ifndef ClassParser_H
+#define ClassParser_H
 
 #include <vector>
 #include <array>

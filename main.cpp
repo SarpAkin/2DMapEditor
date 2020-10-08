@@ -1,16 +1,10 @@
 #include <iostream>
-#include <filesystem>
-#include <string>
+
+#include "src/LevelEditor.h"
+
 int main()
 {
-    #if 0
-	Example demo;
-	if (demo.Construct(256, 240, 4, 4))
-		demo.Start();
-	return 0;
-    #endif
-	for(auto& file : std::filesystem::directory_iterator("src"))
-    {
-        std::cout << file.path().string() << std::endl;
-    }
+    LevelEditor editor;
+    if(editor.Construct(1280,720,1,1))
+        editor.Start();
 }

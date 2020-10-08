@@ -33,6 +33,8 @@ struct Tile
 
 namespace nsTile
 {
+    extern std::map<std::array<char,16>,Tile> dictionary;
+    extern std::vector<Tiledata> Tiledatas;
     void init();
     std::pair<std::string,int> exportToString();
     std::string::iterator ImportFromString(std::string::iterator,int size,std::string& path);
